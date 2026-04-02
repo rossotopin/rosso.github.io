@@ -7,8 +7,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body { cursor: none; }
-
     /* Animated gradient */
     .bg-animated {
       background: linear-gradient(-45deg, #0f172a, #1e293b, #020617, #111827);
@@ -26,29 +24,6 @@
     .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
     .fade-up.show { opacity: 1; transform: translateY(0); }
 
-    /* Custom cursor */
-    .cursor-dot, .cursor-outline {
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-    }
-
-    .cursor-dot {
-      width: 6px;
-      height: 6px;
-      background: white;
-    }
-
-    .cursor-outline {
-      width: 30px;
-      height: 30px;
-      border: 1px solid white;
-      transition: all 0.15s ease;
-    }
-
     /* Parallax */
     .parallax { transform: translateY(0px); transition: transform 0.2s ease-out; }
 
@@ -56,10 +31,6 @@
 </head>
 
 <body class="bg-animated text-white font-sans">
-
-  <!-- Cursor -->
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
 
   <!-- Navbar -->
   <nav class="flex justify-between items-center p-6 max-w-6xl mx-auto fade-up">
@@ -158,18 +129,6 @@
       });
     });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Custom cursor
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
-
-    window.addEventListener('mousemove', e => {
-      dot.style.top = e.clientY + 'px';
-      dot.style.left = e.clientX + 'px';
-
-      outline.style.top = e.clientY + 'px';
-      outline.style.left = e.clientX + 'px';
-    });
 
     // Parallax effect
     window.addEventListener('scroll', () => {
